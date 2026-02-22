@@ -90,7 +90,7 @@ def uniformCostSearch(problem: SearchProblem):
         return []
     
     estructura = utils.PriorityQueue()
-    estructura.push((start,[],0)0)
+    estructura.push((start,[],0),0)
     mejor = {start : 0}
     
     while not estructura.isEmpty ():
