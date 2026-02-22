@@ -38,7 +38,7 @@ def depthFirstSearch(problem: SearchProblem):
     explorados = set()
     
     while not estructura.isEmpty():
-        state, actions = estrcutura.pop()
+        state, actions = estrucutura.pop()
         if state in explorados:
             continue 
         
