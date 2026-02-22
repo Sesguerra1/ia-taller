@@ -28,7 +28,32 @@ def depthFirstSearch(problem: SearchProblem):
     print("Is the start a goal?", problem.isGoalState(problem.getStartState()))
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
-    # TODO: Add your code here
+    start = problem.getStartState()
+    if problem.isGoalState(start):
+        return []
+    
+    
+    estructura = utils.Stack()
+    estructura.push((start,[]))
+    explorados = set()
+    
+    while not estructura.isEmpty():
+        state, actions = estrcutura.pop()
+        if state in explorados:
+            continue 
+        
+        explorados.add(state)
+        
+        if problem.isGoalState(state):
+            return actions 
+        
+        for succ , action , _stepCost in problem.getSuccessors(state):
+            if succ not in explorados:
+                estructura.push((succ , actions + [action])) 
+        
+    return []
+        
+    
     utils.raiseNotDefined()
 
 
