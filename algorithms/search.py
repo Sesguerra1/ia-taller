@@ -117,7 +117,24 @@ def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
     """
     Search the node that has the lowest combined cost and heuristic first.
     """
-    # TODO: Add your code here
+    start = problem.getStartState()
+    if problem.isGoalState(start):
+        return []
+    estructura = utils.PriorityQueue()
+    estructura.push((start,[],0),heuristic(start, problem))
+    mejor = {start : 0}
+    while not estructura.isEmpty ():
+        state,actions, mej = estructura.pop()
+        if mej != mejor.get(state, float("inf")):
+            continue
+        if problem.isGoalState(state):
+            return actions
+        for succ, action, stepCost in problem.getSuccessors(state):
+            nuevo_mej = mej + stepCost
+            if nuevo_mej < mejor.get(succ, float("inf")):
+                mejor[succ] = nuevo_mej
+                mejor_con_heuristica = nuevo_mej + heuristic(succ, problem)
+                estructura.push((succ, actions + [action], nuevo_mej), mejor_con_heuristica)
     utils.raiseNotDefined()
 
 
