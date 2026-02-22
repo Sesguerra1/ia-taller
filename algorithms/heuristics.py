@@ -17,6 +17,10 @@ def manhattanHeuristic(state, problem):
     """
     # TODO: Add your code here
     utils.raiseNotDefined()
+    goal = problem.isGoalState(state)
+    x1, y1 = state
+    x2, y2 = goal
+    return abs(x1 - x2) + abs(y1 - y2)
 
 
 def euclideanHeuristic(state, problem):
@@ -25,6 +29,10 @@ def euclideanHeuristic(state, problem):
     """
     # TODO: Add your code here
     utils.raiseNotDefined()
+    goal = problem.isGoalState(state)
+    x1, y1 = state
+    x2, y2 = goal
+    return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
 
 
 def survivorHeuristic(state: Tuple[Tuple, Any], problem: MultiSurvivorProblem):
