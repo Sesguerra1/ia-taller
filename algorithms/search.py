@@ -61,7 +61,22 @@ def breadthFirstSearch(problem: SearchProblem):
     """
     Search the shallowest nodes in the search tree first.
     """
-    # TODO: Add your code here
+    start = problem.getStartState()
+    if problem.isGoalState(start):
+        return []
+    estructura = utils.Queue()
+    explorados = set()
+    estructura.push((start,[]))
+    explorados.add(start)
+    while not estructura.isEmpty():
+        state, actions = estructura.pop()
+        if problem.isGoalState(state):
+            return actions 
+        for succ , action , _stepCost in problem.getSuccessors(state):
+            if succ not in explorados:
+                explorados.add(succ)
+                estructura.push((succ , actions + [action]))
+    return []
     utils.raiseNotDefined()
 
 
@@ -70,7 +85,23 @@ def uniformCostSearch(problem: SearchProblem):
     Search the node of least total cost first.
     """
 
-    # TODO: Add your code here
+    start = problem.getStartState()
+    if problem.isGoalState(start):
+        return []
+    
+    estructura = utils.PriorityQueue()
+    estructura.push((start,[],0)0)
+    mejor = {start : 0}
+    
+    while not estructura.isEmpty ():
+        state , actions , mej = estructura.pop()
+        
+        if mej != mejor.get(state, float("inf")):
+            continue
+            
+        if problem.isGoalState(state):
+            return actions 
+        
     utils.raiseNotDefined()
 
 
