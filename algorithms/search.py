@@ -102,6 +102,14 @@ def uniformCostSearch(problem: SearchProblem):
         if problem.isGoalState(state):
             return actions 
         
+        for succ, action, stepCost in problem.getSuccessors(state):
+            nuevo_mej = mej + stepCost
+            if nuevo_mej < mejor.get(succ, float("inf")):
+                mejor[succ] = nuevo_mej
+                frontier.push((succ, actions + [action], nuevo_mej), nuevo_mej)
+
+    return []
+        
     utils.raiseNotDefined()
 
 
