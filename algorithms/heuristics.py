@@ -53,7 +53,7 @@ def survivorHeuristic(state: Tuple[Tuple, Any], problem: MultiSurvivorProblem):
     position, survivors_grid = state
     x, y = position
 
-    # lista de sobrevivientes restantes
+    
     if hasattr(survivors_grid, "asList"):
         survivors = survivors_grid.asList()
     else:
