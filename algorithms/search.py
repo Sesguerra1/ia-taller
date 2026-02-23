@@ -38,7 +38,7 @@ def depthFirstSearch(problem: SearchProblem):
     explorados = set()
     
     while not estructura.isEmpty():
-        state, actions = estrucutura.pop()
+        state, actions = estructura.pop()
         if state in explorados:
             continue 
         
@@ -106,7 +106,7 @@ def uniformCostSearch(problem: SearchProblem):
             nuevo_mej = mej + stepCost
             if nuevo_mej < mejor.get(succ, float("inf")):
                 mejor[succ] = nuevo_mej
-                frontier.push((succ, actions + [action], nuevo_mej), nuevo_mej)
+                estructura.push((succ, actions + [action], nuevo_mej), nuevo_mej)
 
     return []
         
